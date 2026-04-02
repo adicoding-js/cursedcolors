@@ -1,0 +1,226 @@
+:root {
+  --card-bg: #0f0f0f;
+  --text-primary: #ffffff;
+  --text-muted: #888888;
+  --radius: 18px;
+}
+
+body {
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  font-family: sans-serif;
+}
+
+.card {
+    background-color: var(--card-bg);
+  border-raduis: 18px; 
+    border-radius: var(--radius);
+    width: 700px;
+  height: 450px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    position: relative;
+    overflow: hidden;
+  color: var(--text-primary);
+  transition: background-color 0.2s ease;
+}
+
+.screen { 
+  display: none; 
+}
+.screen.active { 
+  display: block; 
+    padding: 40px;
+  height: 100%;
+  box-sizing: border-box;
+}
+.screen.p-0.active {
+  padding: 0;
+}
+
+.title { 
+    font-size: 85px; 
+    font-weight: bold; 
+    margin: 0 0 15px 0; 
+  line-height: 1; 
+  letter-spacing: -2px; 
+}
+
+.subtitle { 
+  color: var(--text-muted); 
+    font-size: 15px; 
+    line-height: 1.4; 
+  max-width: 420px; 
+}
+
+.controls { 
+    position: absolute;
+  bottom: 40px;
+    display: flex; 
+    align-items: center; 
+    gap: 20px; 
+}
+
+.toggle-box {
+  background: #222;
+    padding: 10px 15px;
+    border-radius: 30px;
+  display: flex;
+  gap: 10px;
+}
+.toggle-box label { cursor: pointer; font-size: 14px; }
+.toggle-box input { cursor: pointer; }
+
+#startBtn, #playAgainBtn { 
+    background: white; 
+    color: black; 
+    border: none; 
+    padding: 12px 35px; 
+  border-radius: 30px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    font-size: 16px; 
+}
+
+#roundIndMem, #roundIndGuess {
+  position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 14px;
+  opacity: 0.6;
+}
+
+.timer-area {
+    position: absolute;
+  top: 30px;
+    right: 30px;
+    text-align: right;
+}
+
+#countdown {
+  font-size: 90px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.timer-label {
+    font-size: 14px;
+  color: var(--text-muted);
+}
+
+.guess-layout {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.strip-container {
+  display: flex;
+  width: 120px;
+  height: 100%;
+}
+
+.strip {
+  flex: 1;
+  position: relative;
+  cursor: grab;
+}
+
+#hueStrip {
+  background: linear-gradient(to bottom, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+}
+
+#satBriStrip {
+  background: linear-gradient(to bottom, #ffffff, #888888, #000000);
+}
+
+.strip-dot {
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50%;
+  pointer-events: none;
+}
+
+.preview-area {
+  flex: 1;
+  background: #333;
+  position: relative;
+}
+
+#submitGuessBtn {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: white;
+  border: none;
+  cursor: pointer;
+}
+
+.split-view {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.half {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.half-label {
+  background: rgba(0,0,0,0.5);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.flash-score {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 80px;
+  font-weight: bold;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.end-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#finalScoreText {
+  font-size: 70px;
+  margin: 0;
+  line-height: 1;
+}
+
+#summaryGrid {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+#playAgainBtn {
+  display: block;
+  margin: 0 auto;
+}
