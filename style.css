@@ -162,12 +162,16 @@ body {
   position: absolute;
   bottom: 30px;
   right: 30px;
-  width: 50px;
+  width: 60px;
   height: 50px;
   border-radius: 50%;
   background: white;
   border: none;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .split-view {
@@ -180,7 +184,8 @@ body {
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
+  padding-bottom: 40px;
   position: relative;
 }
 
