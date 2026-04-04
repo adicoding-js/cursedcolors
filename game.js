@@ -145,18 +145,11 @@ document.getElementById("targetHalf").style.backgroundColor = "rgb("+target.r+",
 }
 
 function calcScore(tr,tg,gr,tb,gg,gb){
-    var rm = (tr + gr) / 2;
-    var dR = tr - gr;
-    var dG = tg - gg;
-    var dB = tb - gb;
-
-var weightR = 2 + (rm / 256);
-var weightG = 4.0;
-var weightB = 2+ ((225 - rm) / 256);
-
-var dist = Math.sqrt((weightR * dR * dR) + (weightG * dG * dG) + (weightB * dB * dB));
-var maxDist = 764.83;
-return Math.max(0, Math.round((1-dist / maxDist) * 100));
+    var dist = Math.sqrt(Math.pow(tr - gr, 2) + Math.pow(tg - gg, 2) + Math.pow(tb - gb, 2));
+    var maxDist = 441.67
+    var rawPct = 1 - (dist/maxDist);
+    var harshPct = Math.pow(rawPct, 2.5) * 100;
+    return Math.max(0, Math.min(100, Math.round(harshPct)));
 
 }
 
@@ -168,7 +161,7 @@ function showEndScreen() {
 
     roundScores.forEach((s,i) => {
     sum += s;
-    var item = document.getElementById("div");
+    var item = document.createElement("div");
     item.innerHTML = `
             <div style="display:flex; gap:2px; margin-bottom:5px">
                 <div style="width:30px; height:30px; border-radius:4px; background:rgb(${targetcolors[i].r},${targetcolors[i].g},${targetcolors[i].b})"></div>
@@ -180,6 +173,12 @@ function showEndScreen() {
     });
 document.getElementById("finalScoreText").innerHTML = Math.round(sum/5) + "%";
 }
+document.getElementById("readyBtn").onclick = function() {
+    clearInterval(countdowntimer);
+    card.style.backgroundColor = "#0f0f0f";
+    screenMem.classList.remove("active");
+    screenguess.classList.add("active");
+};
 
 document.getElementById("playAgainBtn").onclick = () => location.reload();
 satBriStrip.style.background = "linear-gradient(to bottom, #ffffff, hsl(0, 100%, 50%), #000000)";
